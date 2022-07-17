@@ -33,7 +33,7 @@ def home(request):
         search_query = request.GET.get('search_query')
  
     title = 'Home'
-    products = Product.objects.filter(owner=request.user)
+    products = Product.objects.filter(Q(name__icontains=search_query) | Q(price__icontains=search_query) | Q(description__icontains=search_query), owner=request.user)
     paginator = Paginator(products, 3)
     page_number = request.GET.get('page')
 
