@@ -1,4 +1,5 @@
 from django.db import models
+from django.forms import CharField
 import qrcode
 from io import BytesIO
 from django.core.files import File
