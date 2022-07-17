@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-9">
+            <h3 class="text-md-start fw-bold">Hi, {{request.user.first_name}}</h3>
+        </div>
+        <div class="col-md-3 rounded-circle">
+            <img src="" alt="">
+        </div>
+    </div>
+
+    <div class="card bg-dark">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4 border-end border-light">
+                    <div class="container d-flex justify-content-between">
+                        <div class="icon rounded-circle d-flex align-items-center p-2"><i class='bx bx-grid-alt'></i></div>
+                        <p class="text-light">See all</p>
+                    </div>
+                    <div class="container d-flex justify-content-between mt-3">
+                        <h5 class="text-light">Total Product</h5>
+                        <h5 class="text-light">20</h5>
+                    </div>
+                </div>
+                <div class="col-md-4 border-end border-light">
+                    <div class="container d-flex justify-content-between">
+                        <div class="icon-1 rounded-circle d-flex align-items-center p-2"><i class='bx bx-grid-alt'></i></div>
+                        <p class="text-light">See all</p>
+                    </div>
+                    <div class="container d-flex justify-content-between mt-3">
+                        <h5 class="text-light">Verified Product</h5>
+                        <h5 class="text-light">5</h5>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="container d-flex justify-content-between">
+                        <div class="icon-2 rounded-circle d-flex align-items-center p-2"><i class='bx bx-grid-alt'></i></div>
+                        <p class="text-light">See all</p>
+                    </div>
+                    <div class="container d-flex justify-content-between mt-3">
+                        <h5 class="text-light">Unverified Product</h5>
+                        <h5 class="text-light">15</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h5 class="my-3 fw-bold">Products</h5>
+
+    <div class="card bg-light">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-9">Show <span class="btn btn-down">10 <i class='bx bx-chevron-down'></i></span> entries</div>
+                <div class="col-md-3">
+                    <form action="{% url 'home' %}" method="GET">
+                        <input type="text" class="form-control" placeholder="Search Product...." name="search_query">    
+                    </form>
+                </div>
+            </div>
+            <div class="card mt-2">
+                <div class="card-body table-responsive">
+                    <table class="table table-borderless">
+                        <thead>
+                          <tr class="table-light">
+                            <th scope="col"><input class="form-check-input me-1" type="checkbox"></th>
+                            <th scope="col">Product Name</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Availability</th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            {% if page_obj %}
+                            {% for product in page_obj %}
+                            <tr>
+                                <th scope="row"><input class="form-check-input me-1" type="checkbox"></th>
+                                <td data-bs-toggle="modal" data-bs-target="#exampleModal">{{product.name}}</td>
+                                <td>{{product.quantity}}</td>
+                                <td>N{{product.price}}</td>
+                                {% if product.quantity == '0' %}
+                                <td><div class="stock-error badge text-wrap text-danger">Finished</div></td>
+                                {% else %}
+                                <td><div class="stock-success badge text-wrap text-success">In stock</div></td>
+                                {% endif %}
+                                <td><i class='bx bx-dots-vertical-rounded'></i></td>
+                            </tr>
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                  <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Product Details</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <img src="{{product.product_image.url}}" class="img-fluid" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="row border-bottom">
+                                                <div class="col-md-5">
+                                                    <img src="{{product.product_qrcode.url}}" class="img-fluid img-qr" alt="">
+                                                </div>
+                                                <div class="col-md-7 mt-1">https://qrcode.herokuapp.com/productInfo/{{product.id}}</div>
+                                            </div>
+                                            <div class="row border-bottom">
+                                                <div class="col-md-9 mt-3">
+                                                    <h6 class="fw-bold">Product name</h6>
+                                                    <h6 class="text-muted">{{product.name}}</h6>
+                                                </div>
+                                                <div class="col-md-3 mt-3">
+                                                    <h6 class="fw-bold">Quantity</h6>
+                                                    <h6 class="text-muted">{{product.quantity}}</h6>
+                                                </div>
+                                            </div>
+                                            <div class="row border-bottom">
+                                                <div class="col-md-9 mt-3">
+                                                    <h6 class="fw-bold">Amount</h6>
+                                                    <h6 class="text-muted">NGN {{product.price}}</h6>
+                                                </div>
+                                                <div class="col-md-3 mt-3">
+                                                    <h6 class="fw-bold">Availability</h6>
+                                                    {% if product.quantity == '0' %}
+                                                    <h6 class="text-muted">Finished</h6>
+                                                    {% else %}
+                                                    <h6 class="text-muted">In Stock</h6>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            <div class="row border-bottom">
+                                                <div class="col mt-3">
+                                                    <h6 class="fw-bold">Product Description</h6>
+                                                    <h6 class="text-muted">{{product.description}}</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div> 
+            <div class="row mt-3">
+                <div class="col-md-9">Showing {{page_obj.number}} of {{page_obj.paginator.num_pages}}</div>
+                <div class="col-md-3">
+                    <ul class="list-inline">
+                        {% if page_obj.has_previous %}
+                        <li class="list-inline-item"><a href="?page={{page_obj.previous_page_number}}" class="btn btn-sub"><i class='bx bx-chevron-left'></i></a></li>
+                        {% endif %}
+
+                        {% for page_number in paginator.page_range %}
+                        {% if page_number == page_obj.number %}
+                        <li class="list-inline-item"><a href="?page={{page_number}}" class="btn btn-current">{{page_number}}</a></li>
+                        {% else %}
+                        <li class="list-inline-item"><a href="?page={{page_number}}" class="btn btn-sub">{{page_number}}</a></li>
+                        {% endif %}
+                        {% endfor %}
+
+                        {% if page_obj.has_next %}
+                        <li class="list-inline-item"><a href="?page={{page_obj.next_page_number}}" class="btn btn-sub"><i class='bx bx-chevron-right'></i></a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+

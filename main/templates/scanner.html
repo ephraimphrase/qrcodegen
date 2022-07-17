@@ -1,0 +1,27 @@
+{% extends 'landingbase.html' %} 
+{% block content %}
+<div class="row">
+  <div class="col">
+        <div style="width: 500px" id="reader"></div>
+  </div>
+  <div class="col" style="padding: 30px">
+        <h4>SCAN RESULT</h4>
+        <div id="result">Result Here</div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  function onScanSuccess(qrCodeMessage) {
+    document.getElementById("result").innerHTML = '<span class="result">' + qrCodeMessage + "</span>";
+    window.location.href = `${qrCodeMessage}`
+  }
+  function onScanError(errorMessage) {
+    //handle scan error
+  }
+  var html5QrcodeScanner = new Html5QrcodeScanner("reader", {
+    fps: 10,
+    qrbox: 250,
+  });
+  html5QrcodeScanner.render(onScanSuccess, onScanError);
+</script>
+{% endblock content %}

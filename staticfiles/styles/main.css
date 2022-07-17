@@ -1,0 +1,46 @@
+@font-face {
+    font-family: 'cabinetgrotesk';
+    src: url('../fonts/CabinetGrotesk-Regular.otf');
+}
+
+*{
+    font-family: 'cabinetgrotesk';
+}
+
+.icon{
+    background: #A1ECB2;
+}
+
+.icon-1{
+    background: #FFE28C;
+}
+
+.icon-2{
+    background: #99BFFB;
+}
+
+.stock-success{
+    background: #F0FFF8;
+}
+
+.stock-error{
+    background: #FFF0F0;
+}
+
+.btn-current{
+    background: #1ABBB9;
+}
+
+.btn-sub{
+    background: #F1F7FF;
+}
+
+.btn-down{
+    background: #FFFFFF;
+}
+
+.img-qr{
+    width: 100px !important;
+    max-width: 100%;
+    max-height: 100%; 
+}

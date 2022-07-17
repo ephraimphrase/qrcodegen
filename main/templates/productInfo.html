@@ -1,0 +1,45 @@
+{% extends 'landingbase.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h3 class="fw-bold mt-3">Product Details</h3>
+    <img src="{{product.product_image.url}}" class="img-fluid mt-3" alt="">
+    <div class="row border-bottom mt-3">
+        <div class="col-4">
+            <img src="{{product.product_qrcode.url}}" class="img-fluid img-qr" alt="">
+        </div>
+        <div class="col-8">https://qrcode.herokuapp.com/productInfo/{{product.id}}</div>
+    </div>
+    <div class="row border-bottom mt-3">
+        <div class="col-8">
+            <h6 class="fw-bold">Manufacturer</h6>
+            <h6 class="text-muted">Microsoft</h6>
+        </div>
+        <div class="col-4">
+            <h6 class="fw-bold">Product ID</h6>
+            <h6 class="text-muted">{{product.id}}</h6>
+        </div>
+    </div>
+    <div class="row border-bottom">
+        <div class="col mt-3">
+            <h6 class="fw-bold">Description</h6>
+            <h6 class="text-muted">{{product.description}}</h6>
+        </div>
+    </div>
+    <div class="row border-bottom mt-3">
+        <div class="col-8">
+            <h6 class="fw-bold">Product</h6>
+            <h6 class="text-muted">{{product.name}}</h6>
+        </div>
+        <div class="col-4">
+            <h6 class="fw-bold">Product</h6>
+            <h6 class="text-muted text-success">Verified</h6>
+        </div>
+    </div>
+    <div class="row">
+        <a href="" class="btn btn-dark mt-3 p-3">Proceed with purchase</a>
+    </div>
+</div>
+{% endblock content %}
+

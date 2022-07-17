@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <form action="{% url 'signIn' %}" method="POST">
+                        {% csrf_token %}
+                        <input type="text" class="form-control" placeholder="Username" name='username'>
+                        <input type="password" class="form-control mt-1" placeholder="Password" name='password'>
+                    
+                        <button class="btn btn-dark mt-1" type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8"></div>
+    </div>
+</div>
+
+{% endblock content %}

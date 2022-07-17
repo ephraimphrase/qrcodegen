@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <form action="{% url 'signUp' %}" method="POST">
+                        {% csrf_token %}
+                        <input type="text" class="form-control" placeholder="First Name" name='first_name'>
+                        <input type="text" class="form-control mt-1" placeholder="Last Name" name='last_name'>
+                        <input type="email" class="form-control mt-1" placeholder="Email" name='email'>
+                        <input type="text" class="form-control mt-1" placeholder="Username" name='username'>
+                        <input type="password" class="form-control mt-1" placeholder="Password" name='password'>
+                    
+                        <button class="btn btn-dark mt-1" type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8"></div>
+    </div>
+</div>
+{% endblock content %}
