@@ -77,9 +77,9 @@
                         <tbody>
                             {% if page_obj %}
                             {% for product in page_obj %}
-                            <tr>
+                            <tr data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 <th scope="row"><input class="form-check-input me-1" type="checkbox"></th>
-                                <td data-bs-toggle="modal" data-bs-target="#exampleModal">{{product.name}}</td>
+                                <td>{{product.name}}</td>
                                 <td>{{product.quantity}}</td>
                                 <td>N{{product.price}}</td>
                                 {% if product.quantity == '0' %}
