@@ -93,7 +93,7 @@
                     </table>
                 </div>
             </div>
-            {% if page_obj %}
+            {% for product in page_obj %}
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
@@ -147,7 +147,7 @@
                     </div>
                 </div>
             </div>
-            {% endif %}
+            {% endfor %}
             <div class="row mt-3">
                 <div class="col-md-9">Showing {{page_obj.number}} of {{page_obj.paginator.num_pages}}</div>
                 <div class="col-md-3">
