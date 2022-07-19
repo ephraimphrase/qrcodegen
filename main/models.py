@@ -18,7 +18,7 @@ class Product(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, unique=True, max_length=10)
     created = models.DateTimeField(auto_created=True, null=True, blank=True)
-    product_status = models.BooleanField(null=True, blank=True)
+    product_status = models.BooleanField(default=False)
     
     def __str__(self):
         return self.name

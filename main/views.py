@@ -19,7 +19,7 @@ def qrCodeGen(request):
         description = request.POST['description']
         product_image = request.FILES['product_image']
 
-        product = Product.objects.create(owner=request.user, name=name, quantity=quantity, price=price, description=description, product_image=product_image, product_status=False)
+        product = Product.objects.create(owner=request.user, name=name, quantity=quantity, price=price, description=description, product_image=product_image)
         product.save()
 
         return redirect('home')
