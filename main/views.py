@@ -19,7 +19,7 @@ def qrCodeGen(request):
         description = request.POST['description']
         product_image = request.FILES['product_image']
 
-        product = Product.objects.create(owner=request.user, name=name, quantity=quantity, price=price, description=description, product_image=product_image)
+        product = Product.objects.create(owner=request.user, name=name, quantity=quantity, price=price, description=description, product_image=product_image, product_status=False)
         product.save()
 
         return redirect('home')
@@ -33,6 +33,9 @@ def home(request):
         search_query = request.GET.get('search_query')
  
     title = 'Home'
+    count = Product.objects.all().count()
+    vert_count = Product.objects.get(product_status=True).count()
+    verf_count = Product.objects.get(product_status=False).count()
     products = Product.objects.filter(Q(name__icontains=search_query) | Q(price__icontains=search_query) | Q(description__icontains=search_query), owner=request.user)
     paginator = Paginator(products, 3)
     page_number = request.GET.get('page')
@@ -46,7 +49,7 @@ def home(request):
         page_number = paginator.num_pages
         page_obj = paginator.get_page(page_number)
 
-    context = {'title':title, 'products':products, 'page_obj':page_obj, 'paginator':paginator, }
+    context = {'title':title, 'products':products, 'page_obj':page_obj, 'paginator':paginator, 'count':count, 'vert_count':vert_count, 'verf_count':verf_count }
     return render(request, 'home.html', context)
 
 def signUp(request):
@@ -110,6 +113,8 @@ def productInfo(request, pk):
 
 def scanner(request):
     title = 'Scanner'
-    product = Product.objects.all()
+    product = Product.objects.get(product_status=False)
+    product.product_status = True
+    product.save()
     context = {'title':title, 'product':product}
     return render(request, 'scanner.html', context)
