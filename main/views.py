@@ -34,11 +34,12 @@ def home(request):
  
     title = 'Home'
     count = Product.objects.all().count()
-    vert_count = 0
 
     if Product.objects.get(product_status=True):
         vert_count = Product.objects.get(product_status=True)
-        
+    else:
+        vert_count = 0
+
     verf_count = Product.objects.get(product_status=False).count()
     products = Product.objects.filter(Q(name__icontains=search_query) | Q(price__icontains=search_query) | Q(description__icontains=search_query), owner=request.user)
     paginator = Paginator(products, 3)
