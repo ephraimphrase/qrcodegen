@@ -36,7 +36,7 @@ def home(request):
     count = Product.objects.all().count()
 
     if Product.objects.get(product_status=True):
-        vert_count = Product.objects.get(product_status=True).count()
+        vert_count = len(Product.objects.get(product_status=True)) 
     else:
         vert_count = 0
 
