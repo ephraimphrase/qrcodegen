@@ -75,7 +75,6 @@
                           </tr>
                         </thead>
                         <tbody>
-                            {% if page_obj %}
                             {% for product in page_obj %}
                             <tr data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 <th scope="row"><input class="form-check-input me-1" type="checkbox"></th>
@@ -89,67 +88,66 @@
                                 {% endif %}
                                 <td><i class='bx bx-dots-vertical-rounded'></i></td>
                             </tr>
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                  <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Product Details</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="row">
-                                                <div class="col">
-                                                    <img src="{{product.product_image.url}}" class="img-fluid" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="row border-bottom">
-                                                <div class="col-md-5">
-                                                    <img src="{{product.product_qrcode.url}}" class="img-fluid img-qr" alt="">
-                                                </div>
-                                                <div class="col-md-7 mt-1">https://qrcodegenapp.herokuapp.com/productInfo/{{product.id}}</div>
-                                            </div>
-                                            <div class="row border-bottom">
-                                                <div class="col-md-9 mt-3">
-                                                    <h6 class="fw-bold">Product name</h6>
-                                                    <h6 class="text-muted">{{product.name}}</h6>
-                                                </div>
-                                                <div class="col-md-3 mt-3">
-                                                    <h6 class="fw-bold">Quantity</h6>
-                                                    <h6 class="text-muted">{{product.quantity}}</h6>
-                                                </div>
-                                            </div>
-                                            <div class="row border-bottom">
-                                                <div class="col-md-9 mt-3">
-                                                    <h6 class="fw-bold">Amount</h6>
-                                                    <h6 class="text-muted">NGN {{product.price}}</h6>
-                                                </div>
-                                                <div class="col-md-3 mt-3">
-                                                    <h6 class="fw-bold">Availability</h6>
-                                                    {% if product.quantity == '0' %}
-                                                    <h6 class="text-muted">Finished</h6>
-                                                    {% else %}
-                                                    <h6 class="text-muted">In Stock</h6>
-                                                    {% endif %}
-                                                </div>
-                                            </div>
-                                            <div class="row border-bottom">
-                                                <div class="col mt-3">
-                                                    <h6 class="fw-bold">Product Description</h6>
-                                                    <h6 class="text-muted">{{product.description}}</h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             {% endfor %}
-                            {% else %}
-                            <h5 class="text-muted">There are no products</h5>
-                            {% endif %}
                         </tbody>
                     </table>
                 </div>
-            </div> 
+            </div>
+            {% if page_obj %}
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Product Details</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col">
+                                    <img src="{{product.product_image.url}}" class="img-fluid" alt="">
+                                </div>
+                            </div>
+                            <div class="row border-bottom">
+                                <div class="col-md-5">
+                                    <img src="{{product.product_qrcode.url}}" class="img-fluid img-qr" alt="">
+                                </div>
+                                <div class="col-md-7 mt-1">https://qrcodegenapp.herokuapp.com/productInfo/{{product.id}}</div>
+                            </div>
+                            <div class="row border-bottom">
+                                <div class="col-md-9 mt-3">
+                                    <h6 class="fw-bold">Product name</h6>
+                                    <h6 class="text-muted">{{product.name}}</h6>
+                                </div>
+                                <div class="col-md-3 mt-3">
+                                    <h6 class="fw-bold">Quantity</h6>
+                                    <h6 class="text-muted">{{product.quantity}}</h6>
+                                </div>
+                            </div>
+                            <div class="row border-bottom">
+                                <div class="col-md-9 mt-3">
+                                    <h6 class="fw-bold">Amount</h6>
+                                    <h6 class="text-muted">NGN {{product.price}}</h6>
+                                </div>
+                                <div class="col-md-3 mt-3">
+                                    <h6 class="fw-bold">Availability</h6>
+                                    {% if product.quantity == '0' %}
+                                    <h6 class="text-muted">Finished</h6>
+                                    {% else %}
+                                    <h6 class="text-muted">In Stock</h6>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="row border-bottom">
+                                <div class="col mt-3">
+                                    <h6 class="fw-bold">Product Description</h6>
+                                    <h6 class="text-muted">{{product.description}}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
             <div class="row mt-3">
                 <div class="col-md-9">Showing {{page_obj.number}} of {{page_obj.paginator.num_pages}}</div>
                 <div class="col-md-3">
