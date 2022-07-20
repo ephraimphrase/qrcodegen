@@ -1,3 +1,4 @@
+from email.mime import base
 from django.shortcuts import render,redirect
 from .models import Product
 from django.contrib.auth.models import User
@@ -39,6 +40,7 @@ def home(request):
 
     if request.GET.get('page_range'):
         page_range = request.GET.get('page_range')
+        page_range = int(page_range, base=0)
 
     vert_count = Product.objects.filter(product_status=True).count()
     verf_count = Product.objects.filter(product_status=False).count()
