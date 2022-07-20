@@ -22,10 +22,10 @@
                         <li>
                             <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                                 <li class="w-100 list rounded-start rounded-end">
-                                    <a href="{% url 'home' %}" class="nav-link link px-0 text-dark"><i class='bx bx-store'></i> <span class="d-none d-sm-inline">Home</span></a>
+                                    <a href="{% url 'home' %}" class="nav-link link px-0 text-dark"><i class='bx bx-store span'></i> <span class="d-none d-sm-inline span">Home</span></a>
                                 </li>
                                 <li class="mt-2 list rounded-start rounded-end">
-                                    <a href="{% url 'qrCodeGen' %}" class="nav-link link px-0 text-dark"><i class='bx bx-qr-scan'></i> <span class="d-none d-sm-inline">QR Code</span></a>
+                                    <a href="{% url 'qrCodeGen' %}" class="nav-link link px-0 text-dark"><i class='bx bx-qr-scan span'></i> <span class="d-none d-sm-inline span">QR Code</span></a>
                                 </li>
                             </ul>
                         </li>   
@@ -33,14 +33,14 @@
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start p-3 mt-5" id="menu">
                         {% if request.user.is_authenticated %}
                         <li class="w-100 list rounded-start rounded-end">
-                            <a href="{% url 'signOut' %}" class="nav-link link px-0 text-dark"><i class='bx bx-power-off'></i><span class="d-none d-sm-inline">Log Out</span></a>
+                            <a href="{% url 'signOut' %}" class="nav-link link px-0 text-dark"><i class='bx bx-power-off span'></i><span class="d-none d-sm-inline span">Log Out</span></a>
                         </li>
                         {% else %}
                         <li class="w-100 list rounded-start rounded-end">
-                            <a href="{% url 'signIn' %}" class="nav-link link px-0 text-dark"><i class='bx bx-log-in-circle'></i><span class="d-none d-sm-inline">Log In</span></a>
+                            <a href="{% url 'signIn' %}" class="nav-link link px-0 text-dark"><i class='bx bx-log-in-circle span'></i><span class="d-none d-sm-inline span">Log In</span></a>
                         </li>
                         <li class="w-100 list rounded-start rounded-end">
-                            <a href="{% url 'signUp' %}" class="nav-link link px-0 text-dark"><i class='bx bx-clipboard'></i><span class="d-none d-sm-inline">Register</span></a>
+                            <a href="{% url 'signUp' %}" class="nav-link link px-0 text-dark"><i class='bx bx-clipboard span'></i><span class="d-none d-sm-inline span">Register</span></a>
                         </li>
                         {% endif %}
                     </ul>

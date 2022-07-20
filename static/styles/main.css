@@ -53,10 +53,7 @@
     width: 80px;
 }
 
-.list:hover{
+.list:hover, .link:hover, .span:hover, {
     background: #000;
-}
-
-.link:hover{
     color: #FFFFFF;
 }
