@@ -2,47 +2,48 @@
 
 {% block content %}
 <div class="container">
-    <div class="row">
-        <div class="col">
-            <img src="{{product.product_image.url}}" class="img-fluid" alt="">
+    <div class="row mt-3">
+        <div class="col-8">
+            <h3 class="fw-bold mt-3">Product Details</h3>
+            https://qrcode.herokuapp.com/product/{{product.id}}
+        </div>
+        <div class="col-4">
+            <div class="container d-flex">
+                <p class="fs-6">Use your phone <br> to to scan and verify <br> authenticity</p>
+                <img src="{{product.product_qrcode.url}}" class="img-fluid img-qr" alt="">
+            </div>
         </div>
     </div>
-    <div class="row border-bottom">
-        <div class="col-md-5">
-            <img src="{{product.product_qrcode.url}}" class="img-fluid img-qr" alt="">
-        </div>
-        <div class="col-md-7 mt-1">https://qrcodegenapp.herokuapp.com/productInfo/{{product.id}}</div>
-    </div>
-    <div class="row border-bottom">
-        <div class="col-md-9 mt-3">
-            <h6 class="fw-bold">Product name</h6>
+
+    <img src="{{product.product_image.url}}" class="img-fluid mt-3" alt="">
+
+    <div class="row border-bottom mt-3">
+        <div class="col-8">
+            <h6 class="fw-bold">Product Name</h6>
             <h6 class="text-muted">{{product.name}}</h6>
         </div>
-        <div class="col-md-3 mt-3">
+        <div class="col-4">
             <h6 class="fw-bold">Quantity</h6>
-            <h6 class="text-muted">{{product.quantity}}</h6>
+            <h6 class="text-muted text-success">{{product.quantity}}</h6>
         </div>
     </div>
-    <div class="row border-bottom">
-        <div class="col-md-9 mt-3">
+
+    <div class="row border-bottom mt-3">
+        <div class="col-8">
             <h6 class="fw-bold">Amount</h6>
-            <h6 class="text-muted">NGN {{product.price}}</h6>
+            <h6 class="text-muted">{{product.price}}</h6>
         </div>
-        <div class="col-md-3 mt-3">
+        <div class="col-4">
             <h6 class="fw-bold">Availability</h6>
-            {% if product.quantity == '0' %}
-            <h6 class="text-muted">Finished</h6>
-            {% else %}
-            <h6 class="text-muted">In Stock</h6>
-            {% endif %}
+            <h6 class="text-muted text-success">In stock</h6>
         </div>
-    </div>
-    <div class="row border-bottom">
+    </div>    
+
+    <div class="row">
         <div class="col mt-3">
-            <h6 class="fw-bold">Product Description</h6>
+            <h6 class="fw-bold">Description</h6>
             <h6 class="text-muted">{{product.description}}</h6>
         </div>
     </div>
-</div>
 </div>
 {% endblock content %}
