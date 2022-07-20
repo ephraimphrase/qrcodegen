@@ -84,8 +84,8 @@
                         <tbody>
                             {% if page_obj %}
                             {% for product in page_obj %}
-                            <a href="{% url 'product' product.id %}">
-                                <tr>
+                            <tr>
+                                <a href="{% url 'product' product.id %}">
                                     <th scope="row"><input class="form-check-input me-1" type="checkbox"></th>
                                     <td>{{product.name}}</td>
                                     <td>{{product.quantity}}</td>
@@ -96,8 +96,10 @@
                                     <td><div class="stock-success badge text-wrap text-success">In stock</div></td>
                                     {% endif %}
                                     <td><i class='bx bx-dots-vertical-rounded'></i></td>
-                                </tr>
-                            </a>
+                                </a>
+                            </tr>
+                            
+                            
                             {% endfor %}
                             {% else %}
                             <h5 class="text-muted">There are no products</h5>
