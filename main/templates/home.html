@@ -86,7 +86,7 @@
                             {% for product in page_obj %}
                             <tr>
                                 <th scope="row"><input class="form-check-input me-1" type="checkbox"></th>
-                                <td><a href="{% url 'product' product.id %}" class="product">{{product.name}}</a></td>
+                                <td><a href="{% url 'product' product.id %}" class="text-dark text-decoration-none">{{product.name}}</a></td>
                                 <td>{{product.quantity}}</td>
                                 <td>N{{product.price}}</td>
                                 {% if product.quantity == '0' %}
