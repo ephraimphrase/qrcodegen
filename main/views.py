@@ -36,7 +36,7 @@ def home(request):
     title = 'Home'
     count = Product.objects.all().count()
 
-    page_range = 0
+    page_range = 3
 
     if request.GET.get('page_range'):
         page_range = request.GET.get('page_range')
