@@ -36,8 +36,6 @@ def home(request):
     count = Product.objects.all().count()
 
     vert_count = Product.objects.filter(product_status=True).count()
-
-
     verf_count = Product.objects.filter(product_status=False).count()
     products = Product.objects.filter(Q(name__icontains=search_query) | Q(price__icontains=search_query) | Q(description__icontains=search_query), owner=request.user)
     paginator = Paginator(products, 3)
@@ -111,13 +109,13 @@ def landing(request):
 def productInfo(request, pk):
     title = 'Product Info'
     product = Product.objects.get(id=pk)
+    product.product_status = True
+    product.save()
     context = {'title':title, 'product':product}
     return render(request, 'productInfo.html', context)
 
 def scanner(request):
     title = 'Scanner'
-    product = Product.objects.get(product_status=False)
-    product.product_status = True
-    product.save()
+    product = Product.objects.all()
     context = {'title':title, 'product':product}
     return render(request, 'scanner.html', context)
