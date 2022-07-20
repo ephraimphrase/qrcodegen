@@ -56,12 +56,7 @@
             <div class="row">
                 <div class="col-md-9">Show <span class="btn btn-down">10
                     <form action="{% url 'home' %}" method="GET">
-                        <select class="form-select" aria-label="Default select" name="page_range">
-                            <option selected="">3</option>
-                            {% for i in range(1, 11) %}
-                            <option value="1">{{i}}</option>
-                            {% endfor %}
-                        </select>
+                        <input type="number" name="page_range" class="form-control" value="3">
                     </form>
                 </span> entries</div>
                 <div class="col-md-3">
