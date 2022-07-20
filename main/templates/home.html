@@ -85,18 +85,16 @@
                             {% if page_obj %}
                             {% for product in page_obj %}
                             <tr>
-                                <a href="{% url 'product' product.id %}">
-                                    <th scope="row"><input class="form-check-input me-1" type="checkbox"></th>
-                                    <td>{{product.name}}</td>
-                                    <td>{{product.quantity}}</td>
-                                    <td>N{{product.price}}</td>
-                                    {% if product.quantity == '0' %}
-                                    <td><div class="stock-error badge text-wrap text-danger">Finished</div></td>
-                                    {% else %}
-                                    <td><div class="stock-success badge text-wrap text-success">In stock</div></td>
-                                    {% endif %}
-                                    <td><i class='bx bx-dots-vertical-rounded'></i></td>
-                                </a>
+                                <th scope="row"><input class="form-check-input me-1" type="checkbox"></th>
+                                <td><a href="{% url 'product' product.id %}">{{product.name}}</a></td>
+                                <td>{{product.quantity}}</td>
+                                <td>N{{product.price}}</td>
+                                {% if product.quantity == '0' %}
+                                <td><div class="stock-error badge text-wrap text-danger">Finished</div></td>
+                                {% else %}
+                                <td><div class="stock-success badge text-wrap text-success">In stock</div></td>
+                                {% endif %}
+                                <td><i class='bx bx-dots-vertical-rounded'></i></td>
                             </tr>
                             
                             
