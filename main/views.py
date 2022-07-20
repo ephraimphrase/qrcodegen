@@ -35,10 +35,15 @@ def home(request):
     title = 'Home'
     count = Product.objects.all().count()
 
+    page_range = ''
+
+    if request.GET.get('page_range'):
+        page_range = request.GET.get('page_range')
+
     vert_count = Product.objects.filter(product_status=True).count()
     verf_count = Product.objects.filter(product_status=False).count()
     products = Product.objects.filter(Q(name__icontains=search_query) | Q(price__icontains=search_query) | Q(description__icontains=search_query), owner=request.user)
-    paginator = Paginator(products, 3)
+    paginator = Paginator(products, int(page_range, 10))
     page_number = request.GET.get('page')
 
     try:
