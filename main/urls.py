@@ -10,4 +10,5 @@ urlpatterns = [
     path('', views.landing, name='landing'),
     path('productInfo/<str:pk>/', views.productInfo, name='productInfo'),
     path('scanner/', views.scanner, name='scanner'),
+    path('product/<str:pk>/', views.product, name='product')
 ]

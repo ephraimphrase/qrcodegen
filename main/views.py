@@ -125,3 +125,9 @@ def scanner(request):
     product = Product.objects.all()
     context = {'title':title, 'product':product}
     return render(request, 'scanner.html', context)
+
+def product(request, pk):
+    title = 'Product'
+    product = Product.objects.get(id=pk)
+    context = {'title':title, 'product':product}
+    return render(request, 'product.html', context)

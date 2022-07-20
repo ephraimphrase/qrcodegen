@@ -1,0 +1,48 @@
+{% extends 'landingbase.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <img src="{{product.product_image.url}}" class="img-fluid" alt="">
+        </div>
+    </div>
+    <div class="row border-bottom">
+        <div class="col-md-5">
+            <img src="{{product.product_qrcode.url}}" class="img-fluid img-qr" alt="">
+        </div>
+        <div class="col-md-7 mt-1">https://qrcodegenapp.herokuapp.com/productInfo/{{product.id}}</div>
+    </div>
+    <div class="row border-bottom">
+        <div class="col-md-9 mt-3">
+            <h6 class="fw-bold">Product name</h6>
+            <h6 class="text-muted">{{product.name}}</h6>
+        </div>
+        <div class="col-md-3 mt-3">
+            <h6 class="fw-bold">Quantity</h6>
+            <h6 class="text-muted">{{product.quantity}}</h6>
+        </div>
+    </div>
+    <div class="row border-bottom">
+        <div class="col-md-9 mt-3">
+            <h6 class="fw-bold">Amount</h6>
+            <h6 class="text-muted">NGN {{product.price}}</h6>
+        </div>
+        <div class="col-md-3 mt-3">
+            <h6 class="fw-bold">Availability</h6>
+            {% if product.quantity == '0' %}
+            <h6 class="text-muted">Finished</h6>
+            {% else %}
+            <h6 class="text-muted">In Stock</h6>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row border-bottom">
+        <div class="col mt-3">
+            <h6 class="fw-bold">Product Description</h6>
+            <h6 class="text-muted">{{product.description}}</h6>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock content %}
