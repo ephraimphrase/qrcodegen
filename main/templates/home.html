@@ -57,8 +57,12 @@
                 <div class="col-md-9">Show <span class="btn bg-light">
                     <form action="{% url 'home' %}" method="GET">
                         <div class="row">
-                            <input type="number" name="page_range" class="form-control page_range" value="3">
-                            <button type="submit">Enter</button>
+                            <div class="col-md-3">
+                                <input type="number" name="page_range" class="form-control page_range" value="3">
+                            </div>
+                            <div class="col-md-3">
+                                <button type="submit">Enter</button>
+                            </div>
                         </div>
                     </form>
                 </span> entries</div>
