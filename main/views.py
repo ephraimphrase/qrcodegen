@@ -43,7 +43,7 @@ def home(request):
     vert_count = Product.objects.filter(product_status=True).count()
     verf_count = Product.objects.filter(product_status=False).count()
     products = Product.objects.filter(Q(name__icontains=search_query) | Q(price__icontains=search_query) | Q(description__icontains=search_query), owner=request.user)
-    paginator = Paginator(products, int(page_range))
+    paginator = Paginator(products, page_range)
     page_number = request.GET.get('page')
 
     try:
