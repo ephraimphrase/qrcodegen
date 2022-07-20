@@ -21,31 +21,32 @@
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start p-3 mt-5" id="menu">
                         <li>
                             <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-                                <li class="w-100">
+                                <li class="w-100 list">
                                     <a href="{% url 'home' %}" class="nav-link px-0 text-dark"><i class='bx bx-store'></i> <span class="d-none d-sm-inline">Home</span></a>
                                 </li>
-                                <li class="mt-2">
+                                <li class="mt-2 list">
                                     <a href="{% url 'qrCodeGen' %}" class="nav-link px-0 text-dark"><i class='bx bx-qr-scan'></i> <span class="d-none d-sm-inline">QR Code</span></a>
                                 </li>
                             </ul>
                         </li>   
                     </ul>
-                </div>
-                <div class="d-flex flex-column align-items-center mt-5 align-items-sm-start px-3 pt-2 text-white">
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start p-3 mt-5" id="menu">
                         {% if request.user.is_authenticated %}
-                        <li class="w-100">
+                        <li class="w-100 list">
                             <a href="{% url 'signOut' %}" class="nav-link px-0 text-dark"><i class='bx bx-power-off'></i><span class="d-none d-sm-inline">Log Out</span></a>
                         </li>
                         {% else %}
-                        <li class="w-100">
+                        <li class="w-100 list">
                             <a href="{% url 'signIn' %}" class="nav-link px-0 text-dark"><i class='bx bx-log-in-circle'></i><span class="d-none d-sm-inline">Log In</span></a>
                         </li>
-                        <li class="w-100">
+                        <li class="w-100 list">
                             <a href="{% url 'signUp' %}" class="nav-link px-0 text-dark"><i class='bx bx-clipboard'></i><span class="d-none d-sm-inline">Register</span></a>
                         </li>
                         {% endif %}
                     </ul>
+                </div>
+                <div class="d-flex flex-column align-items-center mt-5 align-items-sm-start px-3 pt-2 text-white">
+
                 </div>
             </div>
             <div class="col py-3">

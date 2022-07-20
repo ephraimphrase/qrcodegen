@@ -52,3 +52,8 @@
 .page_range{
     width: 80px;
 }
+
+.list:hover{
+    background: #000;
+    color: #FFFFFF;
+}
