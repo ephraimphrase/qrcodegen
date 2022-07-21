@@ -67,7 +67,7 @@
     animation-iteration-count: 1;
     animation-timing-function: ease-out;
     animation-fill-mode: both;
-    animation-direction: reverse;
+    animation-direction: reverse !important;
 }
 
 @keyframes slide-in {
