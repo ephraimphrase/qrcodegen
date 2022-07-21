@@ -1262,7 +1262,7 @@ $modal-md:                          500px !default;
 $modal-lg:                          800px !default;
 $modal-xl:                          1140px !default;
 
-$modal-fade-transform:              translate(-50px, 0) !default;
+$modal-fade-transform:              translate(-50px, 0);
 $modal-show-transform:              none !default;
 $modal-transition:                  transform .3s ease-out !default;
 $modal-scale-transform:             scale(1.02) !default;
