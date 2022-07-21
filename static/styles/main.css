@@ -62,13 +62,14 @@
     width: 1226px;
 }
 
-.product-modal{
-    animation-name: slide-in;
-    animation-timing-function: ease-out;
-    animation-delay: 0s;
-    animation-iteration-count: 1;
-    animation-fill-mode: both;
-    animation-direction: normal;
+.modal.right.fade .modal-dialog {
+    right: -320px;
+    -webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
+       -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
+         -o-transition: opacity 0.3s linear, right 0.3s ease-out;
+            transition: opacity 0.3s linear, right 0.3s ease-out;
+}
 
-    display: none;
+.modal.right.fade.in .modal-dialog {
+    right: 0;
 }
