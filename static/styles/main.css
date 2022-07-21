@@ -61,3 +61,14 @@
 .img-prod{
     width: 1226px;
 }
+
+.product-modal{
+    animation-name: slide-in;
+    animation-timing-function: ease-out;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+    animation-direction: normal;
+
+    display: none;
+}
