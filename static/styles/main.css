@@ -63,5 +63,15 @@
 }
 
 .right{
-    right: 0;
+    animation-name: slide-in;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+    animation-fill-mode: both;
+    animation-direction: reverse;
+}
+
+@keyframes slide-in {
+    100%{
+        right: 0;
+    }
 }
